@@ -33,9 +33,22 @@ int main() {
 			currentPlayer->updatePieceCount(pieceSize);
 
 			// Print a winner if there is one
-			//if (board.checkWin(piece))
-
-			currentPlayer = currentPlayer == &player1 ? &player2 : &player1;
+			if (board.checkWin(piece)) {
+				board.displayBoard();
+				std::cout << (currentPlayer->getPieceColor() == 'Y' ? "\nYellow Wins!" : "\nRed Wins!") << std::endl;
+				gameRunning = false;
+			}
+			// Tie game if both players run out of pieces
+			else if (!player1.hasPiecesLeft() && !player2.hasPiecesLeft()) {
+				board.displayBoard();
+				std::cout << "\nTie game." << std::endl;
+				gameRunning = false;
+			}
+			// Turn of another player
+			else {
+				currentPlayer = currentPlayer == &player1 ? &player2 : &player1;
+			}
+			
 		}
 		else {
 			std::cout << "Invalid move. Try again." << std::endl;

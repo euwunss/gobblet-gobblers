@@ -35,3 +35,19 @@ void Board::placePiece(int position, const std::string& piece, char size) {
     board[position] = size == 'a' ? piece : piece + std::to_string(position + 1);
     return;
 }
+
+// Check for win
+bool Board::checkWin(const std::string& piece) const {
+    char firstLetter = tolower(piece[0]);
+    const int wins[8][3] = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
+        {0, 4, 8}, {2, 4, 6}
+    };
+
+    for (const auto& win : wins) {
+        if (tolower(board[win[0]][0]) == firstLetter && tolower(board[win[1]][0]) == firstLetter && tolower(board[win[2]][0]) == firstLetter) return true;
+    }
+
+    return false;
+}

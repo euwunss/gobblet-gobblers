@@ -10,6 +10,7 @@ public:
     void displayBoard() const;
     bool canPlacePiece(int position, const std::string& piece, char size);
     void placePiece(int position, const std::string& piece, char size);
+    bool checkWin(const std::string& piece) const;
 
 private:
     std::string board[9];

@@ -6,7 +6,7 @@
 
 class Player {
 public:
-    Player(char color) : isWinner(false), piecesColor(color), largePiecesCount(2), midPiecesCount(2), smallPiecesCount(2) {};
+    Player(char color) : piecesColor(color), largePiecesCount(2), midPiecesCount(2), smallPiecesCount(2) {};
     void displayPieces();
     std::string getPlayerMove();
     char getPieceColor() const;
@@ -15,7 +15,6 @@ public:
     void updatePieceCount(char size);
 
 private:
-    bool isWinner;
     char piecesColor;
     int largePiecesCount;
     int midPiecesCount;
