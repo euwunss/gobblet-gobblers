@@ -8,6 +8,11 @@ class Player {
 public:
     Player(char color) : isWinner(false), piecesColor(color), largePiecesCount(2), midPiecesCount(2), smallPiecesCount(2) {};
     void displayPieces();
+    std::string getPlayerMove();
+    char getPieceColor() const;
+    bool hasPiecesLeft() const;
+    bool isMoveValid(const std::string& playerMove);
+    void updatePieceCount(char size);
 
 private:
     bool isWinner;

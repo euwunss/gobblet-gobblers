@@ -8,6 +8,8 @@ class Board {
 public:
     Board();
     void displayBoard() const;
+    bool canPlacePiece(int position, const std::string& piece, char size);
+    void placePiece(int position, const std::string& piece, char size);
 
 private:
     std::string board[9];

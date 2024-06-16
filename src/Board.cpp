@@ -20,3 +20,18 @@ void Board::displayBoard() const {
         << whitespace << board[6] << "|" << board[7] << "|" << board[8] << std::endl;
     return;
 }
+
+// Check if the player can place a piece at a given position in the board
+bool Board::canPlacePiece(int position, const std::string& piece, char size) {
+    int pieceValue = (size == 'a') ? 3 : (size == 'b') ? 2 : 1;
+    int currPieceVal = (board[position][0] == ' ') ? 0 : isupper(board[position][1]) ? 3 : isupper(board[position][0]) ? 2 : 1;
+
+    if (pieceValue > currPieceVal) return true;
+    return false;
+}
+
+// Place a piece at a given position
+void Board::placePiece(int position, const std::string& piece, char size) {
+    board[position] = size == 'a' ? piece : piece + std::to_string(position + 1);
+    return;
+}
