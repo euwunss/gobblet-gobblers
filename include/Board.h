@@ -11,6 +11,7 @@ public:
     bool canPlacePiece(int position, const std::string& piece, char size);
     void placePiece(int position, const std::string& piece, char size);
     bool checkWin(const std::string& piece) const;
+    bool isFull() const;
 
 private:
     std::string board[9];

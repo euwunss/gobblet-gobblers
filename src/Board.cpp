@@ -51,3 +51,13 @@ bool Board::checkWin(const std::string& piece) const {
 
     return false;
 }
+
+// Check if game board is full
+bool Board::isFull() const {
+    for (int i = 0; i < 9; i++) {
+        if (board[i][0] == ' ') {
+            return false;
+        }
+    }
+    return true;
+}

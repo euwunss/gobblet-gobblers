@@ -21,7 +21,7 @@ std::string Player::getPlayerMove() {
         std::cout << "Choose action and location, for example a2: ";
         std::cin >> playerMove;
         if (!isMoveValid(playerMove)) {
-            std::cout << "Invalid move. Try again. \n";
+            std::cout << "\nINVALID MOVE. TRY AGAIN \n";
         }
     } while (!isMoveValid(playerMove));
     return playerMove;
@@ -29,7 +29,7 @@ std::string Player::getPlayerMove() {
 
 // Check if a player's move is valid
 bool Player::isMoveValid(const std::string& playerMove) {
-    if (playerMove == "q") return true;
+    if (playerMove == "q" || playerMove == "u") return true;
 
     if (playerMove.size() == 2) {
         char size = playerMove[0];
