@@ -35,11 +35,7 @@ bool Player::isMoveValid(const std::string& playerMove) {
         char size = playerMove[0];
         char position = playerMove[1];
         if ((size == 'a' || size == 'b' || size == 'c') && (position >= '1' && position <= '9')) {
-            switch (size) {
-            case 'a': return largePiecesCount > 0;
-            case 'b': return midPiecesCount > 0;
-            case 'c': return smallPiecesCount > 0;
-            }
+            return getPieceCount(size) > 0;
         }
     }
     return false;
@@ -47,14 +43,7 @@ bool Player::isMoveValid(const std::string& playerMove) {
 
 // Update piece count
 void Player::updatePieceCount(char size) {
-    switch (size) {
-    case 'a': largePiecesCount -= 1;
-        break;
-    case 'b': midPiecesCount -= 1;
-        break;
-    case 'c': smallPiecesCount -= 1;
-        break;
-    }
+    getPieceCount(size) -= 1;
 }
 
 // Get a player pieces color
@@ -65,4 +54,17 @@ char Player::getPieceColor() const {
 // Check if a player has any pieces left
 bool Player::hasPiecesLeft() const {
     return largePiecesCount > 0 || midPiecesCount > 0 || smallPiecesCount > 0;
+}
+
+// Return the number of player's pieces left
+int& Player::getPieceCount(char size) {
+    switch (size) {
+    case 'a': return largePiecesCount;
+        break;
+    case 'b': return midPiecesCount;
+        break;
+    case 'c': return smallPiecesCount;
+        break;
+    default: throw std::invalid_argument("Invalid piece size");
+    }
 }

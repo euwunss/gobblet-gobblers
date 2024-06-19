@@ -13,6 +13,7 @@ public:
     bool hasPiecesLeft() const;
     bool isMoveValid(const std::string& playerMove);
     void updatePieceCount(char size);
+    int& getPieceCount(char size);
 
 private:
     char piecesColor;
