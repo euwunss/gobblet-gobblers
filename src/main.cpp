@@ -45,13 +45,20 @@ int main() {
 			// Update the board state
 			if (!boardStack.isEmpty()) {
 				board = boardStack.topBoard();
-				player1 = boardStack.topPlayer(1);
-				player2 = boardStack.topPlayer(2);
+				if (currentPlayer == &player1)
+					player2 = boardStack.topPlayer('R');
+				else
+					player1 = boardStack.topPlayer('Y');
 			}
-			else board = Board();
-
-			currentPlayer = currentPlayer == &player1 ? &player2 : &player1;
-		}
+			else {
+				board = Board();
+				player1 = Player('Y');
+				player2 = Player('R');
+			}
+			
+			currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
+			continue;
+		}	
 
 		// Play a move if it is valid
 		else {
@@ -74,14 +81,14 @@ int main() {
 				}
 
 				// Tie game if both players run out of pieces
-				else if (!player1.hasPiecesLeft() && !player2.hasPiecesLeft()) {
+				else if (board.checkTie(player1, player2)) {
 					board.displayBoard();
 					std::cout << "\nTie game." << std::endl;
 					gameRunning = false;
 				}
 
 				// Another player's turn
-				else currentPlayer = currentPlayer == &player1 ? &player2 : &player1;
+				 currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
 			}
 			else {
 				std::cout << "\nCANNOT PLACE PIECE. TRY AGAIN." << std::endl;

@@ -30,9 +30,9 @@ const Board& BoardStack::topBoard() const {
 }
 
 // Return the last saved player1 move
-const Player& BoardStack::topPlayer(int i) const {
+const Player& BoardStack::topPlayer(char pieceColor) const {
 	if (isEmpty()) throw std::out_of_range("There was no previos move.");
-	return (i == 1) ? head->player1 : head->player2;
+	return (pieceColor == 'Y') ? head->player1 : head->player2;
 }
 
 // Check if the board stack is empty

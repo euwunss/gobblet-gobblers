@@ -11,7 +11,7 @@ public:
 	void push(const Board& board, const Player& player1, const Player& player2);
 	void pop();
 	const Board& topBoard() const;
-	const Player& topPlayer(int i) const;
+	const Player& topPlayer(char pieceColor) const;
 	bool isEmpty() const;
 
 private:
@@ -23,7 +23,6 @@ private:
 	};
 
 	BoardNode* head;
-	friend class BoardNode;
 };
 
 

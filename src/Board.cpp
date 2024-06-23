@@ -2,6 +2,7 @@
 // Board class implementation
 
 #include <iostream>
+#include <string>
 #include "../include/Board.h"
 
 // Board class constructor
@@ -50,6 +51,11 @@ bool Board::checkWin(const std::string& piece) const {
     }
 
     return false;
+}
+
+// Check for tie
+bool Board::checkTie(const Player& player1, const Player& player2) const {
+    return (!player1.hasPiecesLeft() && !player2.hasPiecesLeft()) || isFull();
 }
 
 // Check if game board is full
