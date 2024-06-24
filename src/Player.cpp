@@ -68,3 +68,11 @@ int& Player::getPieceCount(char size) {
     default: throw std::invalid_argument("Invalid piece size");
     }
 }
+
+// Check if the player has a larger piece to put
+bool Player::hasLargerPiece(std::string piece) const {
+    if (isupper(piece[1])) return false;
+    if (isupper(piece[0])) return largePiecesCount > 0;
+    if (islower(piece[0])) return midPiecesCount > 0 || largePiecesCount > 0;
+    return false;
+}

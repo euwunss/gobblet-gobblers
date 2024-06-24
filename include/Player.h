@@ -14,6 +14,7 @@ public:
     bool isMoveValid(const std::string& playerMove);
     void updatePieceCount(char size);
     int& getPieceCount(char size);
+    bool hasLargerPiece(std::string piece) const;
 
 private:
     char piecesColor;

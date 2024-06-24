@@ -54,8 +54,8 @@ bool Board::checkWin(const std::string& piece) const {
 }
 
 // Check for tie
-bool Board::checkTie(const Player& player1, const Player& player2) const {
-    return (!player1.hasPiecesLeft() && !player2.hasPiecesLeft()) || isFull();
+bool Board::checkTie(Player* anotherPlayer) const {
+    return !canMakeMove(anotherPlayer) && isFull();
 }
 
 // Check if game board is full
@@ -66,4 +66,16 @@ bool Board::isFull() const {
         }
     }
     return true;
+}
+
+// Check if move can be made when the board is full
+bool Board::canMakeMove(Player* player) const {
+    if (!isFull()) return true;
+
+    for (int i = 0; i < 9; i++) {
+        if (player->hasLargerPiece(board[i]))
+            return true;
+    }
+
+    return false;
 }

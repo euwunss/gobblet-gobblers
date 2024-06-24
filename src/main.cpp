@@ -18,7 +18,7 @@ int main() {
 	bool showBoard = true;
 
 	// Continue the game until one player wins or both players run out of their pieces
-	while (gameRunning && (player1.hasPiecesLeft() || player2.hasPiecesLeft())) {
+	while (gameRunning) {
 
 		// Display the board and player's pieces
 		if (showBoard) {
@@ -81,7 +81,7 @@ int main() {
 				}
 
 				// Tie game if both players run out of pieces
-				else if (board.checkTie(player1, player2)) {
+				else if (board.checkTie(currentPlayer == &player1 ? &player2 : &player1)) {
 					board.displayBoard();
 					std::cout << "\nTie game." << std::endl;
 					gameRunning = false;
@@ -99,4 +99,3 @@ int main() {
 
 	return 0;
 }
-

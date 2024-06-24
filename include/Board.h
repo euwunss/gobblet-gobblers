@@ -13,8 +13,9 @@ public:
     bool canPlacePiece(int position, const std::string& piece, char size);
     void placePiece(int position, const std::string& piece, char size);
     bool checkWin(const std::string& piece) const;
-    bool checkTie(const Player& player1, const Player& player2) const;
+    bool checkTie(Player* anotherPlayer) const;
     bool isFull() const;
+    bool canMakeMove(Player* player) const;
 
 private:
     std::string board[9];
